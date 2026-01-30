@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      server:
+        default: ServerName
+        type: string
+        required: false
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: copy
+        shell: pwsh
+        runs:
+        
+        
+        
+    
+      
