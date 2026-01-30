@@ -7,6 +7,9 @@ on:
         default: ServerName
         type: string
         required: false
+      source:
+        default: "Test\\Test1"
+        required: true
 
 jobs:
   test:
@@ -14,9 +17,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        
       - name: copy
         shell: pwsh
-        runs:
+        run: |
+          New-Item -ItemType Directory -Force -Path "${{ github.events.inputs.source }} 
         
         
         
