@@ -13,6 +13,6 @@ jobs:
       - name: check
         shell: pwsh
         run: |
-          Write-Host "Deploy to env $env:TARGET_ENV
+          Write-Host "Deploy to env $env:TARGET_ENV"
         env:
           TARGET_ENV: ${{ matrix.env }}
