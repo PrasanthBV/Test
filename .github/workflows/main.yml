@@ -2,28 +2,17 @@ name: Test
 
 on:
   workflow_dispatch:
-    inputs:
-      server:
-        default: ServerName
-        type: string
-        required: false
-      source:
-        default: "Test\\Test1"
-        required: true
 
 jobs:
-  test:
-    runs-on: windows-latest
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        env: [dev, test, prod]
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-        
-      - name: copy
+      - name: check
         shell: pwsh
         run: |
-          New-Item -ItemType Directory -Force -Path "${{ github.events.inputs.source }} 
-        
-        
-        
-    
-      
+          Write-Host "Deploy to env $env:TARGET_ENV
+        env:
+          TARGET_ENV: ${{ matrix.env }}
