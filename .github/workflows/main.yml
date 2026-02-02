@@ -8,11 +8,11 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        env: [dev, test, prod]
+        environments: [dev, test, prod]
     steps:
       - name: check
         shell: pwsh
         run: |
           Write-Host "Deploy to env $env:TARGET_ENV"
         env:
-          TARGET_ENV: ${{ matrix.env }}
+          TARGET_ENV: ${{ matrix.environments }}
