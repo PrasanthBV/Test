@@ -27,3 +27,11 @@ jobs:
           Write-Host "Deploy to env $env:TARGET_ENV"
         env:
           TARGET_ENV: ${{ matrix.environments }}
+      - name: testing
+        shell: powershell
+        run: |
+          ./power.ps1
+      - name: fetch vars
+        shell: powershell
+        run: Write-Host "Session $env:RemoteInstanceId"
+        
