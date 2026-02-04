@@ -20,6 +20,8 @@ jobs:
       matrix:
         environments: [dev, test, prod]
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: check
         if: inputs.cleanTables == true && inputs.fillTables == true
         shell: pwsh
