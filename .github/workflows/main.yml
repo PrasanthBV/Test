@@ -2,6 +2,16 @@ name: Test
 
 on:
   workflow_dispatch:
+   inputs:
+     cleanTables:
+        default: true
+        type: boolean
+        required: false
+     fillTables:
+        default: true
+        type: boolean
+        required: false
+    
 
 jobs:
   deploy:
@@ -11,6 +21,7 @@ jobs:
         environments: [dev, test, prod]
     steps:
       - name: check
+        if: inputs.cleanTables == true && inputs.fillTables == true
         shell: pwsh
         run: |
           Write-Host "Deploy to env $env:TARGET_ENV"
